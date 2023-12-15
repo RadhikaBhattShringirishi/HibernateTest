@@ -26,6 +26,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="com.ete.ecom.Student"/>
+        <mapping class="com.ete.ecom.Address"/>
     </session-factory>
 </hibernate-configuration>
 

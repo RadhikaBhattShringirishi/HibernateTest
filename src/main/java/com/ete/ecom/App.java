@@ -1,5 +1,7 @@
 package com.ete.ecom;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,20 +24,36 @@ public class App
         //Creating Student Object
         Student std = new Student();
         
-        std.setId(102);
-        std.setName("SarRadhika");
-        std.setCity("NoidaWest");
+        std.setId(103);
+        std.setName("SarBhatt");
+        std.setCity("NoidaWestGreater");
         
         System.out.println(std);
         
-        Session session = sessionFactory.openSession();
+        //Creating Address Object
         
-        Transaction transaction = session.beginTransaction();
+        Address ad = new Address();
+        ad.setAddressId(2);
+        ad.setCity("NoidaWest");
+        ad.setCreatedAt(new Date());
+//        ad.setImage();
+        ad.setOpen(true);
+        ad.setStreet("B324,Noida,Greater Noida West");
+        ad.setXyz(123.678);
         
-        session.save(std);
+        System.out.println(ad);
+       
+      
+        
+       Session session = sessionFactory.openSession();
+       
+       Transaction transaction = session.beginTransaction();
+       
+       session.save(std);
+       session.save(ad);
          
-        transaction.commit();
-        
-        session.close();
+       transaction.commit();
+       
+     session.close();
     }
 }
