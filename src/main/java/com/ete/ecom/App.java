@@ -1,5 +1,7 @@
 package com.ete.ecom;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -13,7 +15,7 @@ import org.hibernate.cfg.Configuration;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws IOException
     {
         System.out.println( "project started!!!!!" );
         
@@ -24,19 +26,27 @@ public class App
         //Creating Student Object
         Student std = new Student();
         
-        std.setId(103);
-        std.setName("SarBhatt");
-        std.setCity("NoidaWestGreater");
+        std.setId(2);
+        std.setName("BhaJi");
+        std.setCity("NoidaJi");
         
         System.out.println(std);
         
         //Creating Address Object
         
         Address ad = new Address();
-        ad.setAddressId(2);
-        ad.setCity("NoidaWest");
+        ad.setAddressId(201);
+        ad.setCity("Delhi");
         ad.setCreatedAt(new Date());
-//        ad.setImage();
+        
+        //ReadImage Data
+        
+        FileInputStream fis = new FileInputStream("src/main/java/pic.png");
+        byte [] data = new byte[fis.available()];
+        fis.read(data);
+        ad.setImage(data);
+        
+        
         ad.setOpen(true);
         ad.setStreet("B324,Noida,Greater Noida West");
         ad.setXyz(123.678);
@@ -54,6 +64,6 @@ public class App
          
        transaction.commit();
        
-     session.close();
+       session.close();
     }
 }

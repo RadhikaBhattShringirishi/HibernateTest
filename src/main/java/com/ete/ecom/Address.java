@@ -31,7 +31,7 @@ public class Address {
     @Lob
     private byte[] image;
 	
-    @Column(name= "addedDate")
+   
 	private boolean isOpen;
 	
 	@Temporal(TemporalType.DATE)
